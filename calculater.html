@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Muahaha</title>
+	<style type="text/css">
+		h1{font-style: "Arial"; color: lightcoral; margin-left: 70px;}
+		h3{color: black; align-content: center; font-size: 24px;}
+		p{font-style: "Helvetica"; font: bold; color: #c9184a; margin-left: 140px;}
+
+		.button {background-color: #F07167; color: white; padding: 12px 50px; position: absolute; left: 45%; text-align: center; 
+			display: inline-block; font-size: 16px; font-style: "Arial"; border: lightcoral; border-radius: 6px;}
+		.button:hover{background-color: white; color: #F07167;}
+
+		.span{ padding: 20px 300px; background-color: #f8EDEB; border-radius: 6px; font-style: "italic"; color: #a4133c; text-align: center;}
+		a{ padding: 12px 500px; background-color: #800f2f; border-radius: 6px;}
+
+		.all{width: 250; height: 900; margin-left: 20%; margin-right: 20%; margin-bottom: 10%; background-color: #f8EDEB;}
+	</style>
+</head>
+<body>
+	<div class="all">
+		<div class="span"></div>
+		<div>
+			<form action = "#">
+			<h1>JS Calculater</h1>
+			<p>Number 1</p>
+			<div><center><input id = "number1" type="text" size="30" style= "width: 500px"><br><br></label></center></div>
+			<p>Number 2</p>
+			<div><center><input id = "number2" type="text" size="30" style= "width: 500px"><br></label></center></div>
+			<p>Operate way</p>
+
+			<!-- 開始不會的地方 -->
+			<div>
+				<center>
+				<select id="list" style= "width: 500px" onchange="setButton(this.value)">
+					<option value="plus">+</option>
+					<option value="minus">-</option>
+					<option value="times">x</option>
+					<option value="divide">/</option>
+				</select>
+				</center>
+			</div><br>
+			<input id="btn" class="button" type="button" value="Add" onclick="calculate()"><br><br><br>
+			</div>
+
+			<div id="result" class="span"></div>
+		</form>
+	</div>
+
+	<script>
+		var operator = document.getElementById("list");
+		var ans = 100;
+
+		function calculate(){
+			var num1 = parseInt( document.getElementById("number1").value );
+			var num2 = parseInt( document.getElementById("number2").value );
+			if (operator.value == "plus") {
+				ans = num1 + num2;
+				output();
+			}else if (operator.value == "minus") {
+				ans = num1 - num2;
+				output();
+			}else if (operator.value == "times") {
+				ans = num1 * num2;
+				output();
+			}else if (operator.value == "divide") {
+				ans = num1 / num2;
+				output();
+			}
+		}
+
+		function output(){
+			var newLine = document.createElement('div');
+			var textNode = document.createTextNode('Result = ' + ans);
+			newLine.appendChild(textNode);
+			document.getElementById('result').appendChild(newLine);
+		}
+
+		function setButton(val){
+			var button = document.getElementById('btn');
+			if (val == "plus") {
+				button.value = "Plus";
+			}else if (val == "minus") {
+				button.value = "Minus";
+			}else if (val == "times") {
+				button.value = "Times";
+			}else if (val == "divide") {
+				button.value = "Divide";
+			}
+		}
+	</script>
+
+</body>
+</html>
